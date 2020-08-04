@@ -7,15 +7,14 @@ output:
         keep_md: true
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 ## Overview
 
 The goal of this simulation is to compare 
 
 ## Simulation
-```{r, echo = TRUE}
+
+```r
 ##Loading Library
 library(ggplot2)
 library(plotrix)
@@ -34,33 +33,66 @@ for(i in 1:1000){
 hist(means)
 ```
 
+![](SimExercisePart1_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
+
 ## Sample Mean vs Theoretical Mean
 
-```{r}
+
+```r
 #Sample Mean
 sMean <- mean(means)
 print(sMean)
+```
 
+```
+## [1] 4.973703
+```
+
+```r
 #Theoretical Mean
 print(tMean)
+```
 
+```
+## [1] 5
+```
+
+```r
 t.test(means)$conf.int
+```
+
+```
+## [1] 4.924850 5.022557
+## attr(,"conf.level")
+## [1] 0.95
 ```
 
 As can clearly be seen the sample and theoretical 
 
 ## Sample Variance vs Theoretical Variance
-```{r}
+
+```r
 #Sample Variance
 sVar <- var(means)
 print(sVar)
+```
 
+```
+## [1] 0.6197966
+```
+
+```r
 #Theoretical Variance
 print(tVar)
 ```
 
+```
+## [1] 0.625
+```
+
 ##Normal Distribution
-```{r}
+
+```r
 #Creating Normal Distribution
 x <- seq(2, 9, length = 1000)
 y <- dnorm(x, mean = 5, sd = sqrt(0.625))
@@ -68,5 +100,6 @@ y <- dnorm(x, mean = 5, sd = sqrt(0.625))
 hist(means)
 par(new = TRUE)
 plot(x = x, y = y, xaxt = "n", yaxt = "n", type = "l", xlab ="", ylab ="")
-
 ```
+
+![](SimExercisePart1_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
